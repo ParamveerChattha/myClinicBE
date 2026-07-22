@@ -22,7 +22,7 @@ public class Patient {
     private String firstName;
     private String lastName;
     private LocalDate dob;
-    private int phoneNumber;
+    private String phoneNumber;
     private String email;
     private String address;
     private String city;
@@ -35,7 +35,7 @@ public class Patient {
     @JsonIgnoreProperties("patient")
     private List<Appointments> appointment;
 
-    public Patient(UUID id, String city, String email, String address, int phoneNumber, LocalDate dob, String lastName, String firstName) {
+    public Patient(UUID id, String city, String email, String address, String phoneNumber, LocalDate dob, String lastName, String firstName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -51,7 +51,7 @@ public class Patient {
 
     public Patient(){}
 
-    public Patient(String firstName, String lastName, LocalDate dob, int phoneNumber, String email, String address, String city) {
+    public Patient(String firstName, String lastName, LocalDate dob, String phoneNumber, String email, String address, String city) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;

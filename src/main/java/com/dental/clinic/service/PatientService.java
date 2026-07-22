@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,5 +34,20 @@ public class PatientService {
         Patient patient = patientMapper.toEntity(request);
         Patient savedPatient = repo.save(patient);
         return patientMapper.toResponseDTO(savedPatient);
+    }
+
+    public List<PatientResponseDTO> findPatient(String phoneNumber, String firstName){
+        List<Patient> patientsList;
+        if(!firstName.isEmpty() && phoneNumber.isEmpty()){
+            patientsList = repo.findByFirstName(firstName);
+        }
+        else if(!phoneNumber.isEmpty() && firstName.isEmpty() ){
+            patientsList = repo.findByPhoneNumber(phoneNumber);
+        }
+        else {
+            patientsList = repo.findByPhoneNumberAndFirstName(phoneNumber, firstName);
+        }
+
+                return patientMapper.toResponseDTOList(patientsList);
     }
 }

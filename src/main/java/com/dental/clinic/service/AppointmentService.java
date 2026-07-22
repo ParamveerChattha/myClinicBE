@@ -18,14 +18,21 @@ import java.util.stream.Collectors;
 
 @Service
 public class AppointmentService {
-    @Autowired
+
     private AppointmentsRepo appointmentsRepo;
 
-    @Autowired
+
     private PatientsRepo patientRepo;
 
     @Autowired
     private AppointmentMapper appointmentMappper;
+
+    public AppointmentService(AppointmentsRepo appointRepo, PatientsRepo patRepo){
+        this.appointmentsRepo = appointRepo;
+        this.patientRepo = patRepo;
+    }
+
+
 
     @Transactional
     public AppointmentResponseDTO updateAppointment(AppointmentResponseDTO dto){

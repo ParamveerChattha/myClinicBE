@@ -6,6 +6,8 @@ import com.dental.clinic.model.Patient;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface PatientMapper {
 
@@ -18,5 +20,7 @@ public interface PatientMapper {
 
     // Maps DB Entity to response DTO
     PatientResponseDTO toResponseDTO(Patient patient);
+
+    List<PatientResponseDTO> toResponseDTOList(List<Patient> patients);
 
 }

@@ -18,7 +18,7 @@ public class PatientCreateRequest {
     private String lastName;
     @Past(message= "date must be of past")
     private LocalDate dob;
-    private int phoneNumber;
+    private String phoneNumber;
     @Email(message= "Please provide a valid email")
     private String email;
     private String address;
