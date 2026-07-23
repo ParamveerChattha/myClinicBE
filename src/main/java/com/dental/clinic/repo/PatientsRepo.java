@@ -14,7 +14,7 @@ public interface PatientsRepo extends JpaRepository<Patient, UUID> {
 
     List<Patient>  findByPhoneNumber(String phoneNumber);
 
-    List<Patient> findByFirstName(String firstName);
+    List<Patient> findByFirstNameContainingIgnoreCase(String firstName);
 
-    List<Patient> findByPhoneNumberAndFirstName(String phoneNumber, String firstName);
+    List<Patient> findByPhoneNumberAndFirstNameContainingIgnoreCase(String phoneNumber, String firstName);
 }

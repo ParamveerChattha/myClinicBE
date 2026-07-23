@@ -39,13 +39,13 @@ public class PatientService {
     public List<PatientResponseDTO> findPatient(String phoneNumber, String firstName){
         List<Patient> patientsList;
         if(!firstName.isEmpty() && phoneNumber.isEmpty()){
-            patientsList = repo.findByFirstName(firstName);
+            patientsList = repo.findByFirstNameContainingIgnoreCase(firstName);
         }
         else if(!phoneNumber.isEmpty() && firstName.isEmpty() ){
             patientsList = repo.findByPhoneNumber(phoneNumber);
         }
         else {
-            patientsList = repo.findByPhoneNumberAndFirstName(phoneNumber, firstName);
+            patientsList = repo.findByPhoneNumberAndFirstNameContainingIgnoreCase(phoneNumber, firstName);
         }
 
                 return patientMapper.toResponseDTOList(patientsList);
